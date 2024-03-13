@@ -1,0 +1,85 @@
+.resistor {
+  margin-bottom: 0;
+}
+.resistor-capacitor-wires {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  padding-left: 27px;
+}
+.resistor-capacitor-wires-container {
+  position: absolute;
+  top: 387px;
+  left: 108px;
+  font-weight: 500;
+  display: inline-block;
+  width: 274px;
+  height: 75px;
+}
+.project-name {
+  top: 276px;
+  left: 108px;
+  font-size: var(--font-size-50xl);
+  display: inline-block;
+  width: 591px;
+  height: 97px;
+}
+.home2,
+.project-name,
+.steps {
+  position: absolute;
+  font-weight: 500;
+}
+.steps {
+  top: 506px;
+  left: 108px;
+  font-size: var(--font-size-50xl);
+  display: inline-block;
+  width: 591px;
+  height: 97px;
+}
+.home2 {
+  top: 77px;
+  left: 943px;
+  cursor: pointer;
+}
+.about-us2 {
+  top: 77px;
+  left: 1087px;
+  font-weight: 500;
+}
+.about-us2,
+.marv2,
+.pattarai-logo-white-12 {
+  position: absolute;
+  cursor: pointer;
+}
+.pattarai-logo-white-12 {
+  top: 39px;
+  left: 101px;
+  width: 94px;
+  height: 76px;
+  object-fit: cover;
+}
+.marv2 {
+  top: 115px;
+  left: 118px;
+  font-weight: 800;
+}
+.saved-project1 {
+  width: 100%;
+  position: relative;
+  background: linear-gradient(
+    147.41deg,
+    #357af6,
+    #8431f0 34%,
+    #7000ff 66%,
+    #ea56c0
+  );
+  height: 1601px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-family: var(--font-montserrat);
+}

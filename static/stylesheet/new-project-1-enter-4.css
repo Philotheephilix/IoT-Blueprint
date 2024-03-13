@@ -1,0 +1,172 @@
+.enter-your-components1 {
+  position: absolute;
+  top: 674px;
+  left: 108px;
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+}
+.new-project-1-enter-4-child,
+.new-project-1-enter-4-child1,
+.new-project-1-enter-4-inner,
+.new-project-1-enter-4-item {
+  position: absolute;
+  top: 549px;
+  left: 378px;
+  border-radius: var(--br-xl);
+  border: 1px solid var(--color-salmon);
+  box-sizing: border-box;
+  width: 255px;
+  height: 41px;
+}
+.new-project-1-enter-4-child1,
+.new-project-1-enter-4-inner,
+.new-project-1-enter-4-item {
+  top: 714px;
+  left: 108px;
+  width: 1065px;
+}
+.new-project-1-enter-4-child1,
+.new-project-1-enter-4-inner {
+  top: 763px;
+  left: 107px;
+}
+.new-project-1-enter-4-child1 {
+  top: 812px;
+  left: 108px;
+}
+.new-project-1-enter-4-child2 {
+  position: absolute;
+  top: 549px;
+  left: 648px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-darkorchid-100);
+  width: 255px;
+  height: 41px;
+}
+.select-components3 {
+  position: absolute;
+  top: 561px;
+  left: 431px;
+  font-weight: 500;
+}
+.capacitor2,
+.enter-components3,
+.led2,
+.wires {
+  position: absolute;
+  top: 561px;
+  left: 704px;
+  font-weight: 500;
+}
+.capacitor2,
+.led2,
+.wires {
+  top: 726px;
+  left: 125px;
+}
+.led2,
+.wires {
+  top: 775px;
+  left: 124px;
+}
+.wires {
+  top: 824px;
+  left: 125px;
+}
+.b1,
+.b2,
+.b3 {
+  position: absolute;
+  top: 726px;
+  left: 1093px;
+  white-space: pre-wrap;
+}
+.b2,
+.b3 {
+  top: 775px;
+}
+.b3 {
+  top: 824px;
+  left: 1090px;
+}
+.new-project-1-enter-4-child3 {
+  position: absolute;
+  top: 993px;
+  left: 512px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-darkorchid-100);
+  width: 255px;
+  height: 41px;
+}
+.done3 {
+  position: absolute;
+  top: 1005px;
+  left: 618px;
+  font-weight: 500;
+}
+.delete-icon1,
+.plus-math-icon1 {
+  position: absolute;
+  top: 671px;
+  left: 1143px;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+.plus-math-icon1 {
+  left: 1095px;
+}
+.about-us6,
+.home6 {
+  position: absolute;
+  top: 62px;
+  left: 968px;
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  cursor: pointer;
+}
+.about-us6 {
+  left: 1112px;
+  font-weight: 500;
+}
+.pattarai-logo-white-16 {
+  position: absolute;
+  top: 24px;
+  left: 126px;
+  width: 94px;
+  height: 76px;
+  object-fit: cover;
+}
+.marv6 {
+  position: absolute;
+  top: 100px;
+  left: 140px;
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  cursor: pointer;
+}
+.illustrator-drawing-with-ipad-icon3 {
+  position: absolute;
+  top: 151px;
+  left: 464px;
+  width: 353px;
+  height: 353px;
+  overflow: hidden;
+}
+.new-project-1-enter-4 {
+  width: 100%;
+  position: relative;
+  background: linear-gradient(
+    137.92deg,
+    #357af6,
+    #8431f0 34%,
+    #7000ff 66%,
+    #ea56c0
+  );
+  height: 1347px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-mini);
+  color: var(--color-white);
+  font-family: var(--font-montserrat);
+}

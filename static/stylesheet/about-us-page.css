@@ -1,0 +1,117 @@
+.about-us10 {
+  position: absolute;
+  top: 38px;
+  left: 986px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.pattarai-logo-white-19 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 94px;
+  height: 76px;
+  object-fit: cover;
+}
+.frame33,
+.marv9 {
+  position: absolute;
+}
+.marv9 {
+  top: 76px;
+  left: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.frame33 {
+  top: 0;
+  left: 0;
+  width: 94px;
+  height: 100px;
+  overflow: hidden;
+}
+.home10 {
+  position: absolute;
+  top: 38px;
+  left: 842px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.about-our-team-icon,
+.frame31,
+.frame32 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 906px;
+  height: 100px;
+  overflow: hidden;
+}
+.about-our-team-icon,
+.frame31 {
+  top: 41px;
+  left: 101px;
+  width: 1078px;
+}
+.about-our-team-icon {
+  top: 0;
+  left: 571px;
+  width: 404px;
+  height: 404px;
+}
+.lorem-ipsum-dolor,
+.who-we-are {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: 800;
+  display: inline-block;
+  width: 485px;
+  height: 93px;
+}
+.lorem-ipsum-dolor {
+  top: 93px;
+  font-size: var(--font-size-mini);
+  font-weight: 500;
+  width: 414px;
+  height: 180px;
+}
+.frame34,
+.frame35,
+.frame36 {
+  position: absolute;
+  top: 95px;
+  left: 0;
+  width: 485px;
+  height: 273px;
+  overflow: hidden;
+}
+.frame34,
+.frame35 {
+  top: 0;
+  width: 975px;
+  height: 404px;
+}
+.frame34 {
+  top: 228px;
+  left: 108px;
+  width: 1071px;
+  font-size: var(--font-size-50xl);
+}
+.about-us-page {
+  width: 100%;
+  position: relative;
+  background: linear-gradient(
+    112.9deg,
+    #357af6 3.2%,
+    #8431f0 38.5%,
+    #7000ff 69.5%,
+    #ea56c0
+  );
+  height: 832px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-family: var(--font-montserrat);
+}

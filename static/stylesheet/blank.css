@@ -1,0 +1,7 @@
+.blank {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-white);
+  height: 1475px;
+  overflow: hidden;
+}

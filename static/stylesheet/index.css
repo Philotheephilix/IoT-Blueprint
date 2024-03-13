@@ -1,0 +1,111 @@
+.life {
+  color: var(--color-darkorchid-100);
+}
+.bring-your-ideas-container {
+  top: 323px;
+  left: 108px;
+  font-size: var(--font-size-50xl);
+  display: inline-block;
+  width: 505px;
+  height: 186px;
+}
+.about-us,
+.bring-your-ideas-container,
+.home,
+.life1 {
+  position: absolute;
+  font-weight: 800;
+}
+.life1 {
+  top: 407px;
+  left: 426px;
+  font-size: var(--font-size-50xl);
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+}
+.about-us,
+.home {
+  top: 73px;
+  left: 939px;
+  cursor: pointer;
+}
+.about-us {
+  left: 1083px;
+  font-weight: 500;
+}
+.homepage-child,
+.homepage-item {
+  position: absolute;
+  top: 539px;
+  border-radius: var(--br-xl);
+  width: 165px;
+  height: 41px;
+  cursor: pointer;
+}
+.homepage-child {
+  left: 108px;
+  background-color: #d052fc;
+}
+.homepage-item {
+  left: 288px;
+  border: 1px solid #ea56c1;
+  box-sizing: border-box;
+}
+.new-project,
+.saved-projects {
+  position: absolute;
+  top: 551px;
+  left: 144px;
+  font-size: var(--font-size-mini);
+  font-weight: 500;
+}
+.saved-projects {
+  left: 314px;
+}
+.inspire-others-icon {
+  position: absolute;
+  top: 210px;
+  left: 674px;
+  width: 478px;
+  height: 478px;
+  overflow: hidden;
+}
+.pattarai-logo-white-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 94px;
+  height: 76px;
+  object-fit: cover;
+}
+.marv {
+  position: absolute;
+  top: 76px;
+  left: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.pattarai-logo-white-1-parent {
+  position: absolute;
+  top: 35px;
+  left: 97px;
+  width: 94px;
+  height: 100px;
+}
+.homepage {
+  width: 100%;
+  position: relative;
+  background: linear-gradient(
+    112.9deg,
+    #357af6,
+    #8431f0 36.94%,
+    #7000ff 67.94%,
+    #ea56c0
+  );
+  height: 832px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-family: var(--font-montserrat);
+}

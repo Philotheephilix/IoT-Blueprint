@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./new-project-1-enter-3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap"
+    />
+  </head>
+  <body>
+    <div class="new-project-1-enter-3">
+      <div class="enter-your-components">Enter Your Components</div>
+      <div class="new-project-1-enter-3-child"></div>
+      <div class="new-project-1-enter-3-item"></div>
+      <div class="new-project-1-enter-3-inner"></div>
+      <div class="select-components2">Select components</div>
+      <div class="enter-components2">Enter components</div>
+      <div class="component-name">Component Name</div>
+      <div class="new-project-1-enter-3-child1"></div>
+      <div class="done2" id="doneText">Done</div>
+      <img class="delete-icon" alt="" src="./public/delete@2x.png" />
+
+      <img class="plus-math-icon" alt="" src="./public/plus-math@2x.png" />
+
+      <div class="designer-desk1"></div>
+      <div class="home5" id="homeText">Home</div>
+      <div class="about-us5" id="aboutUsText">About us</div>
+      <img
+        class="pattarai-logo-white-15"
+        alt=""
+        src="./public/pattarai-logo-white-1@2x.png"
+      />
+
+      <div class="marv5" id="mARVText">MARV</div>
+      <img
+        class="illustrator-drawing-with-ipad-icon2"
+        alt=""
+        src="./public/illustratordrawingwithipad.svg"
+      />
+    </div>
+
+    <script>
+      var doneText = document.getElementById("doneText");
+      if (doneText) {
+        doneText.addEventListener("click", function (e) {
+          window.location.href = "./new-project1-enter1.html";
+        });
+      }
+      
+      var homeText = document.getElementById("homeText");
+      if (homeText) {
+        homeText.addEventListener("click", function (e) {
+          window.location.href = "./blank.html";
+        });
+      }
+      
+      var aboutUsText = document.getElementById("aboutUsText");
+      if (aboutUsText) {
+        aboutUsText.addEventListener("click", function (e) {
+          window.location.href = "./blank.html";
+        });
+      }
+      
+      var mARVText = document.getElementById("mARVText");
+      if (mARVText) {
+        mARVText.addEventListener("click", function (e) {
+          window.location.href = "./blank.html";
+        });
+      }
+      </script>
+  </body>
+</html>

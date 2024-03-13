@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./saved-project1.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap"
+    />
+  </head>
+  <body>
+    <div class="saved-project1">
+      <div class="resistor-capacitor-wires-container">
+        <ol class="resistor-capacitor-wires">
+          <li class="resistor">Resistor</li>
+          <li class="resistor">Capacitor</li>
+          <li>Wires</li>
+        </ol>
+      </div>
+      <div class="project-name">Project Name</div>
+      <div class="steps">Steps</div>
+      <div class="home2" id="homeText">Home</div>
+      <div class="about-us2" id="aboutUsText">About us</div>
+      <img
+        class="pattarai-logo-white-12"
+        alt=""
+        src="./public/pattarai-logo-white-1@2x.png"
+        id="pattaraiLogoWhite1"
+      />
+
+      <div class="marv2" id="mARVText">MARV</div>
+    </div>
+
+    <script>
+      var homeText = document.getElementById("homeText");
+      if (homeText) {
+        homeText.addEventListener("click", function (e) {
+          window.location.href = "./blank.html";
+        });
+      }
+      
+      var aboutUsText = document.getElementById("aboutUsText");
+      if (aboutUsText) {
+        aboutUsText.addEventListener("click", function (e) {
+          window.location.href = "./blank.html";
+        });
+      }
+      
+      var pattaraiLogoWhite1 = document.getElementById("pattaraiLogoWhite1");
+      if (pattaraiLogoWhite1) {
+        pattaraiLogoWhite1.addEventListener("click", function (e) {
+          window.location.href = "./saved-project.html";
+        });
+      }
+      
+      var mARVText = document.getElementById("mARVText");
+      if (mARVText) {
+        mARVText.addEventListener("click", function (e) {
+          window.location.href = "./blank.html";
+        });
+      }
+      </script>
+  </body>
+</html>

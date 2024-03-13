@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-montserrat: Montserrat;
+
+  /* font sizes */
+  --font-size-xl: 20px;
+  --font-size-mini: 15px;
+  --font-size-50xl: 69px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-darkorchid-100: #cf52fc;
+  --color-black: #000;
+  --color-salmon: #ed7370;
+  --color-plum: #df9ef7;
+
+  /* Border radiuses */
+  --br-xl: 20px;
+}

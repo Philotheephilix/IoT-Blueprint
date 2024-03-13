@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/global.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/saved-project.css')}}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap"
+    />
+  </head>
+  <body>
+    <div class="saved-project">
+      <div class="frame">
+        <div class="frame1">
+          <div class="project-title">Project Title</div>
+          <div class="frame2">
+            <div class="project-brief-container">
+              <p class="project-brief-">Project brief -</p>
+              <p class="project-brief-">+ more</p>
+            </div>
+            <div class="frame-child"></div>
+          </div>
+        </div>
+        <div class="frame3">
+          <div class="frame-item"></div>
+          <div class="project-title1">Project Title</div>
+          <div class="project-brief-container1">
+            <p class="project-brief-">Project brief -</p>
+            <p class="project-brief-">+ more</p>
+          </div>
+        </div>
+        <div class="frame4">
+          <div class="frame-item"></div>
+          <div class="project-title1">Project Title</div>
+          <div class="project-brief-container1">
+            <p class="project-brief-">Project brief -</p>
+            <p class="project-brief-">+ more</p>
+          </div>
+        </div>
+      </div>
+      <div class="frame5">
+        <div class="frame6">
+          <div class="frame7">
+            <div class="project-brief-container3">
+              <p class="project-brief-">Project brief -</p>
+              <p class="project-brief-">+ more</p>
+            </div>
+            <div class="frame8">
+              <div class="rectangle-div" id="rectangle"></div>
+              <div class="frame9">
+                <div class="frame10">
+                  <div class="saved-projects1">Saved Projects</div>
+                </div>
+                <div class="frame11">
+                  <div class="project-title3">Project Title</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame3">
+            <div class="project-title4">Project Title</div>
+            <div class="frame13">
+              <div class="project-brief-container">
+                <p class="project-brief-">Project brief -</p>
+                <p class="project-brief-">+ more</p>
+              </div>
+              <div class="frame-child1" id="rectangle"></div>
+            </div>
+          </div>
+          <div class="frame4">
+            <div class="project-title4">Project Title</div>
+            <div class="frame15">
+              <div class="project-brief-container5">
+                <p class="project-brief-">Project brief -</p>
+                <p class="project-brief-">+ more</p>
+              </div>
+              <div class="frame-child1" id="rectangle"></div>
+            </div>
+          </div>
+        </div>
+        <div class="frame16">
+          <div class="frame17">
+            <div class="frame18">
+              <div class="frame19">
+                <div class="frame20">
+                  <img
+                    class="pattarai-logo-white-11"
+                    alt=""
+                    src="{{ url_for('static',filename='img/pattarai-logo-white-1@2x.png')}}"
+                  />
+
+                  <div class="marv1" id="mARVText">MARV</div>
+                </div>
+              </div>
+              <div class="frame21">
+                <div class="frame22">
+                  <div class="turn-your-saved-container">
+                    <span>Turn your saved into </span>
+                    <span class="made">MADE</span>
+                  </div>
+                  <div class="frame23">
+                    <div class="made1">MADE</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame24">
+            <div class="frame25">
+              <div class="home1" id="homeText">Home</div>
+              <div class="about-us1" id="aboutUsText">About us</div>
+            </div>
+            <img class="frame-icon" alt="" src="{{ url_for('static',filename='img/frame.svg')}}" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var rectangle = document.getElementById("rectangle");
+      if (rectangle) {
+        rectangle.addEventListener("click", function (e) {
+          window.location.href = "./blank.html";
+        });
+      }
+      
+      var mARVText = document.getElementById("mARVText");
+      if (mARVText) {
+        mARVText.addEventListener("click", function (e) {
+          window.location.href = "./blank.html";
+        });
+      }
+      
+      var homeText = document.getElementById("homeText");
+      if (homeText) {
+        homeText.addEventListener("click", function (e) {
+          window.location.href = "{{ url_for('index')}}";
+        });
+      }
+      
+      var aboutUsText = document.getElementById("aboutUsText");
+      if (aboutUsText) {
+        aboutUsText.addEventListener("click", function (e) {
+          window.location.href = "{{ url_for('aboutus')}}";
+        });
+      }
+      </script>
+  </body>
+</html>

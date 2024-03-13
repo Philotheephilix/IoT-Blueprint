@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/global.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/about-us-page.css')}}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap"
+    />
+  </head>
+  <body>
+    <div class="about-us-page">
+      <div class="frame31">
+        <div class="about-us10" id="aboutUsText">About us</div>
+        <div class="frame32">
+          <div class="frame33">
+            <img
+              class="pattarai-logo-white-19"
+              alt=""
+              src="{{ url_for('static',filename='img/pattarai-logo-white-1@2x.png')}}"
+            />
+
+            <div class="marv9" id="mARVText">MARV</div>
+          </div>
+          <div class="home10" id="homeText">Home</div>
+        </div>
+      </div>
+      <div class="frame34">
+        <div class="frame35">
+          <img
+            class="about-our-team-icon"
+            alt=""
+            src="{{ url_for('static',filename='img/aboutourteam.svg')}}"
+          />
+
+          <div class="frame36">
+            <div class="who-we-are">Who we are</div>
+            <div class="lorem-ipsum-dolor">
+              MARV is your creative companion, designed to unlock the potential of your spare components. 
+              Our platform allows users to input their available components and 
+              instantly generates personalized project suggestions tailored to your resources.
+              Turning concepts into finished projects, From idea to implementation, 
+               MARV inspires Tech enthusiasts of all levels to explore, create, and innovate. 
+               Join us in transforming your components into extraordinary creations and let's build together!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var aboutUsText = document.getElementById("aboutUsText");
+      if (aboutUsText) {
+        aboutUsText.addEventListener("click", function (e) {
+          window.location.href = "{{ url_for('aboutus')}}";
+        });
+      }
+      
+      var mARVText = document.getElementById("mARVText");
+      if (mARVText) {
+        mARVText.addEventListener("click", function (e) {
+          window.location.href = "./blank.html";
+        });
+      }
+      
+      var homeText = document.getElementById("homeText");
+      if (homeText) {
+        homeText.addEventListener("click", function (e) {
+          window.location.href = "{{ url_for('index')}}";
+        });
+      }
+      </script>
+  </body>
+</html>
