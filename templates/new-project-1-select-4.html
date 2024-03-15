@@ -37,7 +37,7 @@
       <div class="new-project-1-select-4-child3"></div>
       <div class="new-project-1-select-4-child4"></div>
       <div class="select-components1">Select components</div>
-      <div class="done1" id="doneText">Done</div>
+      <a href="{{ url_for('projectidea')}}"><div class="done1" id="doneText">Done</div></a>
       <div class="select-your-component">Select your component</div>
       <div class="enter-components1">Enter components</div>
       <div class="select-your-power1">Select your power components</div>
@@ -77,11 +77,8 @@
     <script>
       var doneText = document.getElementById("doneText");
       if (doneText) {
-        doneText.addEventListener("click", function () {
-          var anchor = document.querySelector("[data-scroll-to='rectangle']");
-          if (anchor) {
-            anchor.scrollIntoView({ block: "start", behavior: "smooth" });
-          }
+        homeText.addEventListener("click", function (e) {
+          window.location.href = "{{ url_for('index')}}";
         });
       }
       
