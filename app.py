@@ -1,6 +1,5 @@
 from flask import Flask, render_template, jsonify
-from pymongo import MongoClient
-
+from modules.seggregator import seggregate_input
 app = Flask(__name__)
 
 @app.route('/')
@@ -19,5 +18,9 @@ def saved():
 def new():
     return render_template('new-project-1-select-4.html')
 
+@app.route("/projectidea")
+def projectidea():
+    elements=seggregate_input()
+    return render_template('saved-project1.html',title=elements[0],description=elements[1])
 if __name__ == '__main__':
     app.run(debug=True)
