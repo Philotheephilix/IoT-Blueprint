@@ -1,6 +1,9 @@
 body {
   margin: 0;
   line-height: normal;
+  background: linear-gradient(112.9deg,#357af6,#8431f0 33.6%,#7000ff 70.6%,#ea56c1);
+  background-repeat: no repeat;
+  background-attachment: fixed;
 }
 
 :root {

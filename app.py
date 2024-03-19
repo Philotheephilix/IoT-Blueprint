@@ -16,7 +16,7 @@ def saved():
 
 @app.route("/new")
 def new():
-    return render_template('new-project-1-select-4.html')
+    return render_template('newauto.html')
 
 @app.route("/projectidea")
 def projectidea():

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/global.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/new-project-1-select-4.css')}}" />
+
+    <style>
+        /* Additional styles for the search bar and selected items */
+        .new-project-1-select-4{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: static;
+            
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 20px;
+            width: 50%;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #searchResults {
+            display: none;
+            position: absolute;
+            background-color: #ffffff31;
+            width: 100%; /* Adjusted width to fit within parent */
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            z-index: 1;
+        }
+
+        #searchResults .item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #searchResults .item:hover {
+            background-color: #f9f9f9;
+        }
+
+        #selectedItems {
+            margin-top: 20px;
+        }
+
+        .selected-item {
+            margin-bottom: 5px;
+            padding: 5px;
+            background-color: #f1f1f1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <!--<div class="home4" id="homeText">Home</div>
+    <div class="about-us4" id="aboutUsText">About us</div> -->
+    <ul>
+       <li class="home4"><a href="#">Home</a></li>
+       <li class="about-us4"><a href="#">About us</a></li>
+    </ul>
+</div>
+     <img
+       class="marv"
+       alt=""
+       src="{{ url_for('static',filename='img/marvlogo.png')}}"
+     />
+
+     <img
+       class="illustrator-drawing-with-ipad-icon1"
+       alt=""
+       src="{{ url_for('static',filename='img/ipad.png')}}"
+     />
+
+</div>
+<div class="new-project-1-select-4">
+    <div class="search-container">
+        <input type="text" id="searchInput" oninput="searchItems()" placeholder="Search components">
+        <div id="searchResults"></div>
+    </div>
+
+    <div id="selectedItems"></div>
+
+    <!-- Rest of your HTML content -->
+</div>
+
+<script>
+    // Sample array of items
+    const items = [
+        "Resistor",
+        "Capacitor",
+        "Inductor",
+        "Transistor",
+        "LED",
+        "Microcontroller",
+        "Diode",
+        "MAX31855 (K-type thermocouple)",
+    "DS3231 (High Precision RTC with Temperature)",
+    "LM60 (Analog Temperature Sensor)",
+    "HIH-4000 (Analog Humidity Sensor)",
+    "SHT21 (Digital Humidity & Temperature)",
+    "LPS22HB (MEMS nano pressure sensor)",
+    "MPL115A1 (Digital Barometric Pressure Sensor)",
+    "TGS2600 (Air Contaminants Gas Sensor)",
+    "MQ-7 (Carbon Monoxide Gas Sensor)",
+    "MQ-9 (Carbon Monoxide and Flammable Gases Gas Sensor)",
+    "SGP30 (Multi-Pixel Gas Sensor)",
+    "ZMOD4410 (Indoor Air Quality Sensor)",
+    "BH1750 (Digital Ambient Light Sensor)",
+    "MAX44009 (Ambient Light Sensor with ADC)",
+    "VL53L0X (Time-of-Flight Distance Sensor)",
+    "APDS-9960 (Gesture Detection Proximity Sensor)",
+    "ADXL345 (3-Axis Accelerometer)",
+    "MPU-9250 (9-Axis Gyro + Accelerometer + Compass)",
+    "HMC5883L (Magnetometer)",
+    "BNO055 (Absolute Orientation Sensor)",
+    "TCS34725 (Color Recognition Sensor)",
+    "ATmega328 (Microcontroller)",
+    "ATtiny85 (Microcontroller)",
+    "ATSAM3X8E (Microcontroller)",
+    "ESP32-CAM (Microcontroller)",
+    "ESP32-S2 (Microcontroller)",
+    "ESP32-WROOM (Microcontroller)",
+    "ESP32-WROVER (Microcontroller)",
+    "STM32F103 (Microcontroller)",
+    "STM32F407 (Microcontroller)",
+    "STM32H7 (Microcontroller)",
+    "PIC32MX (Microcontroller)",
+    "PIC16F877A (Microcontroller)",
+    "PIC18F Series (Microcontroller)",
+    "Arduino Mega 2560 (Development Board)",
+    "Arduino Leonardo (Development Board)",
+    "Arduino Nano Every (Development Board)",
+    "Raspberry Pi Zero W (Development Board)",
+    "Raspberry Pi 3 Model B+ (Development Board)",
+    "Raspberry Pi Pico (Development Board)",
+    "BeagleBone Green (Development Board)",
+    "BeagleBone Black Wireless (Development Board)",
+    "Feather HUZZAH ESP8266 (Development Board)",
+    "Feather M0 Wi-Fi (Development Board)",
+    "Adafruit Grand Central (Development Board)",
+    "Particle Argon (Development Board)",
+    "Particle Boron (Development Board)",
+    "Particle Xenon (Development Board)",
+    "Jetson Nano (Development Board)",
+    "Jetson Xavier NX (Development Board)",
+    "Rock64 (Development Board)",
+    "Pine H64 (Development Board)",
+    "PinePhone (Development Board)",
+    "8Ω 0.5W Speaker",
+    "4Ω 3W Speaker",
+    "16Ω 1W Speaker",
+    "Piezo Buzzer",
+    "Bone Conduction Transducer",
+    "Miniature Exciter",
+    "Full-range Driver",
+    "Subwoofer Driver",
+    "PAM8403 (Class D Audio Amplifier)",
+    "MAX98357A (I2S Class D Amplifier)",
+    "TDA7297 (Dual Bridge Amplifier)",
+    "LM386 (Low Voltage Audio Power Amplifier)",
+    "PT8211 (16-Bit DAC with Stereo Output)",
+    "WM8960 (Stereo Codec with Speaker Driver)",
+    "OLED Display (128x64 pixels)",
+    "LCD Display (16x2 characters)",
+    "TFT Display (320x240 pixels)",
+    "ePaper Display (2.13 inches)",
+    "LED Matrix Display (8x8)",
+    "Seven-Segment Display (Common Anode)",
+    "Dot Matrix Display (8x32)",
+    "Graphical LCD (128x128 pixels)",
+    "3.5-inch Touchscreen Display",
+    "E-Ink Display (4.2 inches)",
+    "HC-05 Bluetooth Module",
+    "ESP8266 Wi-Fi Module",
+    "SIM800L GSM Module",
+    "RFID-RC522 RFID Module",
+    "L298N Motor Driver",
+    "NE555 Timer IC",
+    "ULN2003 Stepper Motor Driver",
+    "LM2596 DC-DC Buck Converter",
+    "TP4056 LiPo Charger Module",
+    "ACS712 Current Sensor Module",
+    "HC-SR04 Ultrasonic Distance Sensor",
+    "FSR402 Force Sensitive Resistor",
+    "INA219 High-Side DC Current Sensor",
+    "MCP3008 10-bit ADC",
+    "HCSR501 Passive Infrared (PIR) Motion Sensor",
+    "SG90 Micro Servo Motor",
+    "MG996R High Torque Metal Gear Servo",
+    "HC-12 Wireless Transceiver Module",
+    "NRF24L01+ Wireless Transceiver Module",
+    "SIM900A GSM/GPRS Module",
+    "GY-521 MPU6050 Accelerometer and Gyroscope Module",
+    "HC-06 Bluetooth Module",
+    "BMP180 Barometric Pressure Sensor",
+    "DHT22 Digital Temperature and Humidity Sensor",
+    "DS18B20 Waterproof Temperature Sensor",
+    "MCP23017 16-bit I/O Expander",
+    "USBtinyISP AVR Programmer",
+    "WS2812B Addressable RGB LED Strip",
+    "TM1637 4-digit 7-segment Display Module",
+    "PCF8574 I2C I/O Expander",
+    "ADS1115 16-bit ADC Module",
+    "LM35 Analog Temperature Sensor",
+    "MAX30100 Pulse Oximeter and Heart-Rate Sensor",
+    "L298N Dual H-Bridge Motor Driver",
+    "NEMA17 Stepper Motor",
+    "DRV8825 Stepper Motor Driver",
+    "IRF520 MOSFET Module",
+    "LDR Photoresistor",
+    "MCP2515 CAN Bus Module",
+    "RFM69HCW Wireless Transceiver Module",
+    "LM2596 Buck Converter Module",
+    "SD Card Module",
+    "IRF540N N-Channel MOSFET Module",
+    "DHT11 Digital Temperature and Humidity Sensor",
+    "ADXL335 Accelerometer Module",
+    "HC-08 Bluetooth Module",
+    "BH1750FVI Digital Light Intensity Sensor",
+    "HC-SR501 Pyroelectric Infrared PIR Motion Sensor Module",
+    "TCS230 Color Recognition Sensor Module",
+    "IR Receiver Module",
+    "MPU6050 Gyroscope and Accelerometer Module",
+    "L293D Motor Driver Module",
+    "GY-NEO6MV2 GPS Module",
+    "DS3231 Real-Time Clock Module",
+    "BH1750FVI Light Sensor Module",
+    "LM2596 Step-Down Power Module",
+    "INA3221 Triple-Channel DC Current/Voltage Measurement Module",
+    "MPR121 Capacitive Touch Sensor Module",
+    "SX1278 LoRa Module",
+    "HC-SR501 Passive Infrared Sensor Module",
+    "WS2812 Addressable RGB LED Strip",
+    "RFID-RC522 RFID/NFC Reader Module",
+    "MAX30102 Pulse Oximeter and Heart Rate Sensor Module",
+    "AD9833 DDS Signal Generator Module",
+    "SIM800L GSM GPRS Module",
+    "ESP-01S ESP8266 Wi-Fi Module",
+    "TTP223B Capacitive Touch Sensor Module",
+    "MCP4725 12-bit DAC Module",
+    "GY-87 MPU6050 10DOF IMU Module",
+    "ULN2003 Stepper Motor Driver Board",
+    "LM2596 Buck Converter Step Down Module",
+    "GY-521 MPU6050 6DOF Accelerometer and Gyroscope Module",
+    "DS18B20 Temperature Sensor Module",
+    "DS1307 RTC Module",
+    "WS2812B RGB LED Module",
+    "L298N Dual H-Bridge Motor Driver Module",
+    "W5100 Ethernet Shield",
+    "Micro SD Card Module",
+    "ESP8266 NodeMCU Development Board",
+    "HC-SR501 PIR Motion Sensor Module",
+    "ESP32 Development Board",
+    "SIM900A GSM GPRS Module",
+    "GY-273 HMC5883L Triple Axis Compass Magnetometer Sensor Module",
+    "TM1637 4-Digit 7-Segment Display Module",
+    "IRF520 MOSFET Driver Module",
+    "HC-SR04 Ultrasonic Distance Sensor Module",
+    "MT3608 DC-DC Step Up Booster Power Module",
+    "MCP2515 CAN Bus Module TJA1050 Receiver SPI Module",
+    "DS3231 AT24C32 IIC Module Precision RTC Real Time Clock Memory Module",
+    "MCP23017 16-Bit I/O Expander Module",
+    "MPU-6050 3-Axis Accelerometer and Gyroscope Module",
+    "DHT11 Temperature and Humidity Sensor Module",
+    "ESP8266 ESP-12E NodeMCU Lua Wi-Fi Development Board",
+    "AT24C256 I2C Interface 256K Bits EEPROM Module",
+    "GY-30 BH1750FVI Digital Light Intensity Sensor Module",
+    "L298N Dual Motor Driver Controller Board",
+    "ATmega328P-PU with Arduino UNO Bootloader Microcontroller",
+    "RFID-RC522 13.56MHz RFID Reader Module",
+    "MAX7219 Dot Matrix Module 4-in-1 LED Display",
+    "SIM800L GPRS GSM Module MicroSIM Card Core Board Quad-band TTL Serial Port",
+    "GY-521 MPU-6050 Module 3 Axis Gyroscope + Accelerometer",
+    "RFM95W SX1276 LoRa Radio Module 868MHz",
+    "DS1307 RTC Module AT24C32 Real Time Clock Module",
+    "Micro SD TF Card Reader Module",
+    "LM2596S DC-DC Buck Converter Step Down Module",
+    "NE555 Pulse Frequency Duty Cycle Adjustable Module",
+    "XL6009 DC-DC Booster Module Voltage Step Up Board",
+    "ATmega328P-PU DIP-28 Microcontroller with Arduino Bootloader",
+    "ESP8266 ESP-01 Serial Wi-Fi Wireless Module",
+    "MB-102 830 Point Breadboard with Power Supply Module",
+    "10W LED Driver 12-24V Constant Current PWM Dimming",
+    "ADXL345 3-Axis Acceleration Module Tilt-Compensated Digital Accelerometer",
+    "ESP32-CAM AI-Thinker Wi-Fi and Bluetooth Module Camera Module",
+    "TCS3200 Color Sensor Module for Arduino",
+    "Micro SD Card Module with SPI Interface",
+    "ESP8266 ESP-12E NodeMCU CP2102 Lua Wi-Fi Module",
+    "ESP8266 ESP-12F NodeMCU WiFi Development Board Module",
+    "LM2596 DC-DC Step-Down Adjustable Power Supply Module",
+    "L298N Dual H-Bridge DC Stepper Motor Driver Controller Board",
+    "ESP32-CAM ESP32 5V Wi-Fi Bluetooth Development Board Module with OV2640 Camera",
+    "ATmega328P-PU DIP-28 with Arduino UNO Bootloader Microcontroller",
+    "ATmega328P-PU DIP-28 Microcontroller with Arduino UNO Bootloader Installed",
+    "IRF520 MOSFET Driver Module for Arduino Raspberry Pi",
+    "KY-008 Laser Transmitter Module for Arduino AVR PIC",
+    "ESP8266 NodeMCU CP2102 ESP-12E Lua Wi-Fi Development Board",
+    "MAX7219 Dot Matrix LED Display Module for Arduino Raspberry Pi",
+    "GY-NEO6MV2 GPS Module with Antenna for Arduino Raspberry Pi",
+    "NodeMCU ESP8266 ESP-12F Lua WiFi Development Board Module",
+    "GY-521 MPU6050 3-Axis Gyroscope + Accelerometer Module for Arduino",
+    "ESP8266 ESP-12F NodeMCU CP2102 WiFi Lua IoT Development Board Module",
+    "4-Channel 5V Relay Module for Arduino Raspberry Pi",
+    "GY-521 MPU6050 6DOF 3-Axis Gyroscope + Accelerometer Module",
+    "AT24C256 I2C EEPROM Data Storage Module",
+    "10 Segment LED Bar Graph Display Module",
+    "RCWL-0516 Microwave Radar Sensor Module Human Radar Induction Switch Module",
+    "TM1637 4-Bits Digital Tube LED Display Module",
+    "0.96 Inch OLED Display Module 128x64 I2C IIC Serial LCD Screen",
+    "MPU6050 3-Axis Accelerometer and Gyroscope Module for Arduino",
+    "DS3231 AT24C32 IIC High Precision Real Time Clock Module",
+    "XL4015 DC-DC Step Down Adjustable Power Supply Module",
+    "TTP223 Capacitive Touch Switch Button Self-Lock Module",
+    "HC-SR501 Infrared PIR Motion Sensor Detector Module for Arduino",
+    "HC-SR04 Ultrasonic Module Distance Measuring Transducer Sensor",
+    "GY-906 MLX90614ESF Non-Contact Infrared Temperature Sensor Module",
+    "L9110 Dual Channel DC Stepper Motor Driver Controller Module",
+    "MCP23017 Bidirectional 16-Bit I/O Expander with I2C Interface",
+    "KY-040 Rotary Encoder Module for Arduino AVR PIC",
+    "5V Stepper Motor 28BYJ-48 with ULN2003 Driver Board",
+    "HC-SR501 Adjust IR Pyroelectric Infrared PIR Motion Sensor Detector Module",
+    "MPU6050 6DOF 3-Axis Gyroscope + Accelerometer Module for Arduino",
+    "DC 12V Delay Relay Shield NE555 Timer Switch Adjustable Module",
+    "ESP8266 ESP-12E Serial Wi-Fi Wireless Module for Arduino",
+    "MCP2515 CAN Bus Module TJA1050 Receiver SPI for Arduino",
+    "3.2 Inch TFT LCD Display Module Touch Screen Shield for Arduino",
+    "74HC595 8-Bit Shift Register Module for Arduino Raspberry Pi",
+    "AM2302 DHT22 Temperature Humidity Sensor Module for Arduino",
+    "WS2812B RGB LED Module 5V 5050 SMD for Arduino Raspberry Pi",
+    "L293D Motor Drive Shield Expansion Board for Arduino",
+    "BH1750FVI GY-302 Digital Light Intensity Sensor Module",
+    "NE555 Adjustable Frequency Pulse Generator Module",
+    "AT24C32 32K I2C EEPROM Memory Module for Arduino",
+    "HC-05 Wireless Bluetooth RF Transceiver Module for Arduino",
+    "2.4 Inch TFT LCD Display Shield Touch Panel ILI9341 240X320 for Arduino",
+    "DS18B20 Waterproof Digital Temperature Sensor Module for Arduino",
+    "12V Relay Module Board Shield with Optocoupler for Arduino",
+    "L298N Dual H-Bridge Motor Driver Controller Board Module for Arduino",
+    "L298N Dual H-Bridge Motor Driver Board Module for Arduino",
+    "DHT22 AM2302 Digital Temperature and Humidity Sensor Module for Arduino",
+    "TM1637 4-Bits LED Display Digital Tube Module for Arduino",
+    "FT232RL FTDI USB to TTL Serial Converter Adapter Module for Arduino",
+    "BMP280 Digital Barometric Pressure Sensor Module for Arduino",
+    "5V Relay Module with Optocoupler for Arduino PIC AVR MCU DSP ARM",
+    "ATmega328P-PU Microcontroller IC Chip with Bootloader for Arduino",
+    "KY-038 3-Pin Microphone Sound Sensor Module for Arduino",
+    "L298N DC Stepper Motor Driver Controller Dual H-Bridge for Arduino",
+    "ESP8266 ESP-01 Serial Wi-Fi Wireless Module with Adapter for Arduino",
+    "2.4 Inch TFT LCD Touch Screen Display Module ILI9341 240x320 for Arduino",
+    "IIC/I2C 1602 Blue LCD Display Module HD44780 Character 16x2 for Arduino",
+    "BH1750FVI Digital Light Intensity Sensor Module 3.3V-5V for Arduino",
+    "SIM800L V2.0 5V Wireless GSM GPRS Module Quad-Band W/Antenna Cable Cap",
+    "2 Channel Relay Module Board Shield with Optocoupler Support High Low Level Trigger",
+    "WS2812B 5050 RGB LED Strip 5M 150 300 Leds 144 60 LED/M Individual Addressable 5V",
+    "12V Relay 1CH Wireless RF Remote Control Switch Transmitter Receiver Module",
+    "HC-SR501 PIR Motion Sensor Module Pyroelectric Infrared IR Detector for Arduino",
+    "ESP-12E ESP8266 UART WIFI Wireless Shield for Arduino UNO R3 Microcontroller",
+    "LM2596S DC-DC Adjustable Step-Down Power Supply Buck Module with Digital Display",
+    "ESP32-CAM WiFi Bluetooth Development Board Module with Camera OV2640 2MP for Arduino",
+    "1 Channel Isolated 5V Relay Module Coupling For Arduino PIC AVR DSP ARM",
+    "ESP8266 ESP-01S Serial Wireless Module WIFI Sensor ESP-01 Upgrade Version",
+    "DC-DC Buck Step Down Converter Module LM2596 Voltage Regulator LED Voltmeter",
+    "Bluetooth Serial Transceiver Module Base Board HC-05 HC-06 HC-07 HC-08 HC-09 HC-10",
+    "1.8 Inch Serial SPI TFT LCD Module Display PCB Adapter Power IC SD Socket 128X160",
+    "WS2812B 5050 RGB LED Strip 1M 144 Leds Individual Addressable 5V",
+    "HC-05 Wireless Bluetooth RF Transceiver Master Slave Integrated Module for Arduino",
+    "3.5 Inch TFT LCD Display Screen Module 320X480 RGB Pixels Touch Screen for Arduino",
+    "AT24C32 EEPROM I2C Interface EEPROM Data Storage Module for Arduino",
+    "ESP-12F ESP8266 Serial Wi-Fi Wireless Module Wireless Transceiver Adapter Module for Arduino",
+    "ESP8266 ESP-12E UART WIFI Wireless Shield for Arduino R3 Microcontroller",
+    "L9110S Dual Channel DC Stepper Motor Driver Board H-Bridge Controller for Arduino",
+    "HC-SR04 Ultrasonic Distance Sensor Module HC-SR04P with Cable for Arduino",
+    "RFID RC522 RF IC Card Sensor Module with S50 13.56Mhz IC Key Card for Arduino",
+    "L9110S DC Stepper Motor Driver Board H-Bridge L9110 Module for Arduino",
+    "DC-DC Adjustable Step-down Power Supply Module LM2596S Buck Converter",
+    "LM2596 DC-DC Buck Converter Step Down Module Power Supply Output 1.23V-30V",
+    "ESP8266 NodeMCU CP2102 ESP-12E WiFi Internet Development Board Module for Arduino",
+    "ESP8266 ESP-01 Serial Wi-Fi Wireless Adapter Module 3.3V 5V Compatible for Arduino",
+    "ESP32-CAM ESP32 WiFi Bluetooth Development Board Module with Camera Module OV2640",
+    "ESP32-CAM WiFi Bluetooth Development Board Module with Camera Module OV2640 for Arduino",
+    "ESP8266 NodeMCU LUA CP2102 ESP-12E Internet WiFi Development Board Module for Arduino",
+    "ESP8266 ESP-12F NodeMCU WiFi Development Board Module with CH340G USB for Arduino",
+    "ESP8266 ESP-01 ESP-01S Serial Wireless Transceiver Receiver Module for Arduino",
+    "ESP8266 ESP-12F NodeMCU CP2102 Development Board Module with Micro USB for Arduino",
+    "ESP8266 ESP-12F Serial Wi-Fi Wireless Adapter Module 3.3V 5V Compatible for Arduino",
+    "ESP8266 ESP-12S Serial Wi-Fi Wireless Module 2.4 GHz 2400 to 2483.5 MHz for Arduino",
+    "ESP32 Development Board WiFi+Bluetooth Ultra-Low Power Consumption Dual Cores ESP-32S",
+    "ESP32-CAM ESP32 WiFi Bluetooth Development Board Module with OV2640 Camera Module",
+    "ESP8266 ESP-01 ESP-01S Serial Wireless Transceiver Receiver Module with Adapter for Arduino",
+    "ESP8266 ESP-07 Serial WiFi Wireless Module with IPEX Antenna Connector for Arduino",
+    "ESP8266 ESP-01 ESP-01S Serial Wireless Transceiver Receiver Module with Adapter for Arduino",
+    "ESP8266 ESP-12E UART Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12E Serial WiFi Wireless Module with IO Adapter Plate Expansion Board for Arduino",
+    "ESP8266 ESP-12E Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12S Serial Wi-Fi Wireless Module 2.4 GHz 2400 to 2483.5 MHz for Arduino",
+    "ESP8266 ESP-07 Serial Wi-Fi Wireless Module with IPEX Antenna Connector for Arduino",
+    "ESP8266 ESP-01 ESP-01S Serial Wireless Transceiver Receiver Module with Adapter for Arduino",
+    "ESP8266 ESP-12E UART Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12E Serial WiFi Wireless Module with IO Adapter Plate Expansion Board for Arduino",
+    "ESP8266 ESP-12E Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12S Serial Wi-Fi Wireless Module 2.4 GHz 2400 to 2483.5 MHz for Arduino",
+    "ESP8266 ESP-07 Serial Wi-Fi Wireless Module with IPEX Antenna Connector for Arduino",
+    "ESP8266 ESP-01 ESP-01S Serial Wireless Transceiver Receiver Module with Adapter for Arduino",
+    "ESP8266 ESP-12E UART Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12E Serial WiFi Wireless Module with IO Adapter Plate Expansion Board for Arduino",
+    "ESP8266 ESP-12E Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12S Serial Wi-Fi Wireless Module 2.4 GHz 2400 to 2483.5 MHz for Arduino",
+    "ESP8266 ESP-07 Serial Wi-Fi Wireless Module with IPEX Antenna Connector for Arduino",
+    "ESP8266 ESP-01 ESP-01S Serial Wireless Transceiver Receiver Module with Adapter for Arduino",
+    "ESP8266 ESP-12E UART Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12E Serial WiFi Wireless Module with IO Adapter Plate Expansion Board for Arduino",
+    "ESP8266 ESP-12E Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12S Serial Wi-Fi Wireless Module 2.4 GHz 2400 to 2483.5 MHz for Arduino",
+    "ESP8266 ESP-07 Serial Wi-Fi Wireless Module with IPEX Antenna Connector for Arduino",
+    "ESP8266 ESP-01 ESP-01S Serial Wireless Transceiver Receiver Module with Adapter for Arduino",
+    "ESP8266 ESP-12E UART Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12E Serial WiFi Wireless Module with IO Adapter Plate Expansion Board for Arduino",
+    "ESP8266 ESP-12E Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12S Serial Wi-Fi Wireless Module 2.4 GHz 2400 to 2483.5 MHz for Arduino",
+    "ESP8266 ESP-07 Serial Wi-Fi Wireless Module with IPEX Antenna Connector for Arduino",
+    "ESP8266 ESP-01 ESP-01S Serial Wireless Transceiver Receiver Module with Adapter forArduino",
+    "ESP8266 ESP-12E UART Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12E Serial WiFi Wireless Module with IO Adapter Plate Expansion Board for Arduino",
+    "ESP8266 ESP-12E Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12S Serial Wi-Fi Wireless Module 2.4 GHz 2400 to 2483.5 MHz for Arduino",
+    "ESP8266 ESP-07 Serial Wi-Fi Wireless Module with IPEX Antenna Connector for Arduino",
+    "ESP8266 ESP-01 ESP-01S Serial Wireless Transceiver Receiver Module with Adapter for Arduino",
+    "ESP8266 ESP-12E UART Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12E Serial WiFi Wireless Module with IO Adapter Plate Expansion Board for Arduino",
+    "ESP8266 ESP-12E Serial Wi-Fi Wireless Module with CP2102 Chip and Adapter for Arduino",
+    "ESP8266 ESP-12S Serial Wi-Fi Wireless Module 2.4 GHz 2400 to 2483.5 MHz for Arduino",
+    "ESP8266 ESP-07 Serial Wi-Fi Wireless Module with IPEX Antenna Connector for Arduino",
+    "RFM95W LoRa Wireless Transceiver Module",
+    "RFID-RC522 RFID/NFC Reader Module",
+    "SIM800L GSM/GPRS Module",
+    "SIM900A GSM/GPRS Module",
+    "HC-05 Bluetooth Module",
+    "HC-06 Bluetooth Module",
+    "HC-08 Bluetooth Module",
+    "HC-09 Bluetooth Module",
+    "HC-10 Bluetooth Module",
+    "NRF24L01+ Wireless Transceiver Module",
+    "XBee S2C Zigbee Module",
+    "XBee S2 Zigbee Module",
+    "XBee 3 Zigbee Module",
+    "XBee LTE-M/NB-IoT Cellular Module",
+    "XBee Wi-Fi Module",
+    "LoRa SX1278 Wireless Transceiver Module",
+    "LoRa SX1262 Wireless Transceiver Module",
+    "LoRa SX1268 Wireless Transceiver Module",
+    "LoRa SX1276 Wireless Transceiver Module",
+    "LoRa SX1272 Wireless Transceiver Module",
+    "LoRa SX1280 Wireless Transceiver Module",
+    "LoRa SX1281 Wireless Transceiver Module",
+    "LoRa SX1284 Wireless Transceiver Module",
+    "LoRa SX1286 Wireless Transceiver Module",
+    "LoRa SX1287 Wireless Transceiver Module",
+    "LoRa SX1288 Wireless Transceiver Module",
+    "LoRa SX1289 Wireless Transceiver Module",
+    "Zigbee CC2530 Wireless Transceiver Module",
+    "Zigbee CC2531 Wireless Transceiver Module",
+    "Zigbee CC2538 Wireless Transceiver Module",
+    "Zigbee CC2540 Wireless Transceiver Module",
+    "Zigbee CC2541 Wireless Transceiver Module",
+    "Zigbee CC2543 Wireless Transceiver Module",
+    "Zigbee CC2544 Wireless Transceiver Module",
+    "Zigbee CC2545 Wireless Transceiver Module",
+    "Zigbee CC2650 Wireless Transceiver Module",
+    "Zigbee CC2652 Wireless Transceiver Module",
+    "Zigbee CC2652R Wireless Transceiver Module",
+    "Zigbee CC2652P Wireless Transceiver Module",
+    "Zigbee CC2652RB Wireless Transceiver Module",
+    "Zigbee CC2652R1 Wireless Transceiver Module",
+    "Zigbee CC2652R2 Wireless Transceiver Module",
+    "Zigbee CC2652P1 Wireless Transceiver Module",
+    "Zigbee CC2652P2 Wireless Transceiver Module",
+    "Zigbee CC2652RB1 Wireless Transceiver Module",
+    "Zigbee CC2652RB2 Wireless Transceiver Module",
+    "Zigbee CC2652P2 Wireless Transceiver Module",
+    "Zigbee CC2652RB1 Wireless Transceiver Module",
+    "Zigbee CC2652RB2 Wireless Transceiver Module",
+    "Zigbee CC2652RB3 Wireless Transceiver Module",
+    "Zigbee CC2652RB4 Wireless Transceiver Module",
+    "Zigbee CC2652RB5 Wireless Transceiver Module",
+    "Zigbee CC2652RB6 Wireless Transceiver Module",
+    "Zigbee CC2652RB7 Wireless Transceiver Module",
+    "Zigbee CC2652RB8 Wireless Transceiver Module",
+    "Zigbee CC2652RB9 Wireless Transceiver Module",
+    "Zigbee CC2652RB10 Wireless Transceiver Module",
+    "Zigbee CC2652RB11 Wireless Transceiver Module",
+    "Zigbee CC2652RB12 Wireless Transceiver Module",
+    "Zigbee CC2652RB13 Wireless Transceiver Module",
+    "Zigbee CC2652RB14 Wireless Transceiver Module",
+    "Zigbee CC2652RB15 Wireless Transceiver Module",
+    "Zigbee CC2652RB16 Wireless Transceiver Module",
+    "Zigbee CC2652RB17 Wireless Transceiver Module",
+    "Zigbee CC2652RB18 Wireless Transceiver Module",
+    "Zigbee CC2652RB19 Wireless Transceiver Module",
+    "Zigbee CC2652RB20 Wireless Transceiver Module",
+    "Zigbee CC2652RB21 Wireless Transceiver Module",
+    "Zigbee CC2652RB22 Wireless Transceiver Module",
+    "Zigbee CC2652RB23 Wireless Transceiver Module",
+    "Zigbee CC2652RB24 Wireless Transceiver Module",
+    "Zigbee CC2652RB25 Wireless Transceiver Module",
+    "Zigbee CC2652RB26 Wireless Transceiver Module",
+    "Zigbee CC2652RB27 Wireless Transceiver Module",
+    "Zigbee CC2652RB28 Wireless Transceiver Module",
+    "Zigbee CC2652RB29 Wireless Transceiver Module",
+    "Zigbee CC2652RB30 Wireless Transceiver Module",
+    "Zigbee CC2652RB31 Wireless Transceiver Module",
+    "Zigbee CC2652RB32 Wireless Transceiver Module",
+    "Zigbee CC2652RB33 Wireless Transceiver Module",
+    "Zigbee CC2652RB34 Wireless Transceiver Module",
+    "Zigbee CC2652RB35 Wireless Transceiver Module",
+    "Zigbee CC2652RB36 Wireless Transceiver Module",
+    "Zigbee CC2652RB37 Wireless Transceiver Module",
+    "Zigbee CC2652RB38 Wireless Transceiver Module",
+    "Zigbee CC2652RB39 Wireless Transceiver Module",
+    "Zigbee CC2652RB40 Wireless Transceiver Module",
+    "Zigbee CC2652RB41 Wireless Transceiver Module",
+    "Zigbee CC2652RB42 Wireless Transceiver Module",
+    "Zigbee CC2652RB43 Wireless Transceiver Module",
+    "Zigbee CC2652RB44 Wireless Transceiver Module",
+    "Zigbee CC2652RB45 Wireless Transceiver Module",
+    "Zigbee CC2652RB46 Wireless Transceiver Module",
+    "Zigbee CC2652RB47 Wireless Transceiver Module",
+    "Zigbee CC2652RB48 Wireless Transceiver Module",
+    "Zigbee CC2652RB49 Wireless Transceiver Module",
+    "Zigbee CC2652RB50 Wireless Transceiver Module",
+    "Zigbee CC2652RB51 Wireless Transceiver Module",
+    "Zigbee CC2652RB52 Wireless Transceiver Module",
+    "Zigbee CC2652RB53 Wireless Transceiver Module",
+    "Zigbee CC2652RB54 Wireless Transceiver Module",
+    "Zigbee CC2652RB55 Wireless Transceiver Module",
+    "Zigbee CC2652RB56 Wireless Transceiver Module",
+    "Zigbee CC2652RB57 Wireless Transceiver Module",
+    "Zigbee CC2652RB59 Wireless Transceiver Module",
+    "Zigbee CC2652RB60 Wireless Transceiver Module",
+    "Zigbee CC2652RB61 Wireless Transceiver Module",
+    "Zigbee CC2652RB62 Wireless Transceiver Module",
+    "Zigbee CC2652RB63 Wireless Transceiver Module",
+    "Zigbee CC2652RB64 Wireless Transceiver Module",
+    "Zigbee CC2652RB65 Wireless Transceiver Module",
+    "Zigbee CC2652RB66 Wireless Transceiver Module",
+    "Zigbee CC2652RB67 Wireless Transceiver Module",
+    "Zigbee CC2652RB68 Wireless Transceiver Module",
+    "Zigbee CC2652RB69 Wireless Transceiver Module",
+    "Zigbee CC2652RB70 Wireless Transceiver Module",
+    "Zigbee CC2652RB71 Wireless Transceiver Module",
+    "Zigbee CC2652RB72 Wireless Transceiver Module",
+    "Zigbee CC2652RB73 Wireless Transceiver Module",
+    "Zigbee CC2652RB74 Wireless Transceiver Module",
+    "Zigbee CC2652RB75 Wireless Transceiver Module",
+    "Zigbee CC2652RB76 Wireless Transceiver Module",
+    "Zigbee CC2652RB77 Wireless Transceiver Module",
+    "Zigbee CC2652RB78 Wireless Transceiver Module",
+    "Zigbee CC2652RB79 Wireless Transceiver Module",
+    "Zigbee CC2652RB80 Wireless Transceiver Module",
+    "Zigbee CC2652RB81 Wireless Transceiver Module",
+    "Zigbee CC2652RB82 Wireless Transceiver Module",
+    "Zigbee CC2652RB83 Wireless Transceiver Module",
+    "Zigbee CC2652RB84 Wireless Transceiver Module",
+    "Zigbee CC2652RB85 Wireless Transceiver Module",
+    "Zigbee CC2652RB86 Wireless Transceiver Module",
+    "Zigbee CC2652RB87 Wireless Transceiver Module",
+    "Zigbee CC2652RB88 Wireless Transceiver Module",
+    "Zigbee CC2652RB89 Wireless Transceiver Module",
+    "Zigbee CC2652RB90 Wireless Transceiver Module",
+    "Zigbee CC2652RB91 Wireless Transceiver Module",
+    "Zigbee CC2652RB92 Wireless Transceiver Module",
+    "Zigbee CC2652RB93 Wireless Transceiver Module",
+    "Zigbee CC2652RB94 Wireless Transceiver Module",
+    "Zigbee CC2652RB95 Wireless Transceiver Module",
+    "Zigbee CC2652RB96 Wireless Transceiver Module",
+    "Zigbee CC2652RB97 Wireless Transceiver Module",
+    "Zigbee CC2652RB98 Wireless Transceiver Module",
+    "Zigbee CC2652RB99 Wireless Transceiver Module",
+    "Zigbee CC2652RB100 Wireless Transceiver Module",
+    "Zigbee CC2652RB101 Wireless Transceiver Module",
+    "Zigbee CC2652RB102 Wireless Transceiver Module",
+    "Zigbee CC2652RB103 Wireless Transceiver Module",
+    "Zigbee CC2652RB104 Wireless Transceiver Module",
+    "Zigbee CC2652RB105 Wireless Transceiver Module",
+    "Zigbee CC2652RB106 Wireless Transceiver Module",
+    "Zigbee CC2652RB107 Wireless Transceiver Module",
+    "Zigbee CC2652RB108 Wireless Transceiver Module",
+    "Zigbee CC2652RB109 Wireless Transceiver Module",
+    "Zigbee CC2652RB110 Wireless Transceiver Module",
+    "Zigbee CC2652RB111 Wireless Transceiver Module",
+    "Zigbee CC2652RB112 Wireless Transceiver Module",
+    "Zigbee CC2652RB113 Wireless Transceiver Module",
+    "Zigbee CC2652RB114 Wireless Transceiver Module",
+    "Zigbee CC2652RB115 Wireless Transceiver Module",
+    "Zigbee CC2652RB116 Wireless Transceiver Module",
+    "Zigbee CC2652RB117 Wireless Transceiver Module",
+    "Zigbee CC2652RB118 Wireless Transceiver Module",
+    "Zigbee CC2652RB119 Wireless Transceiver Module",
+    "Zigbee CC2652RB120 Wireless Transceiver Module",
+    "Zigbee CC2652RB121 Wireless Transceiver Module",
+    "Zigbee CC2652RB122 Wireless Transceiver Module",
+    "Zigbee CC2652RB123 Wireless Transceiver Module",
+    "Zigbee CC2652RB124 Wireless Transceiver Module",
+    "Zigbee CC2652RB125 Wireless Transceiver Module",
+    "Zigbee CC2652RB126 Wireless Transceiver Module"
+
+
+    ];
+
+    // Function to search items
+    function searchItems() {
+        const searchInput = document.getElementById("searchInput").value.toLowerCase();
+        const searchResults = document.getElementById("searchResults");
+        searchResults.innerHTML = ""; // Clear previous results
+
+        items.forEach(item => {
+            if (item.toLowerCase().includes(searchInput)) {
+                const listItem = document.createElement("div");
+                listItem.classList.add("item");
+                listItem.textContent = item;
+                listItem.addEventListener("click", () => {
+                    addItem(item);
+                });
+                searchResults.appendChild(listItem);
+            }
+        });
+
+        // Show search results
+        searchResults.style.display = searchInput ? "block" : "none";
+    }
+
+    // Function to add selected item
+    function addItem(item) {
+        const selectedItems = document.getElementById("selectedItems");
+        const selectedItem = document.createElement("div");
+        selectedItem.classList.add("selected-item");
+        selectedItem.textContent = item;
+        selectedItems.appendChild(selectedItem);
+
+        // Clear search input and hide search results
+        document.getElementById("searchInput").value = "";
+        document.getElementById("searchResults").style.display = "none";
+    }
+</script>
+
+<!-- Original script section -->
+<script>
+    var doneText = document.getElementById("doneText");
+    if (doneText) {
+        doneText.addEventListener("click", function () {
+            var anchor = document.querySelector("[data-scroll-to='rectangle']");
+            if (anchor) {
+                anchor.scrollIntoView({ block: "start", behavior: "smooth" });
+            }
+        });
+    }
+
+    var homeText = document.getElementById("homeText");
+    if (homeText) {
+        homeText.addEventListener("click", function (e) {
+            window.location.href = "./blank.html";
+        });
+    }
+
+    var aboutUsText = document.getElementById("aboutUsText");
+    if (aboutUsText) {
+        aboutUsText.addEventListener("click", function (e) {
+            window.location.href = "./blank.html";
+        });
+    }
+
+    var mARVText = document.getElementById("mARVText");
+    if (mARVText) {
+        mARVText.addEventListener("click", function (e) {
+            window.location.href = "./blank.html";
+        });
+    }
+</script>
+</body>
+</html>

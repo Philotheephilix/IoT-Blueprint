@@ -237,53 +237,66 @@
   height: 358px;
   overflow: hidden;
 }
+
+.navbar ul{
+  list-style: none;
+  text-align: right;
+}
+
+.navbar li{
+  display: inline-block;
+  margin: 20px;
+}
+
+.navbar a{
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 60px 25px;
+}
+
+.navbar a:hover{
+  font-weight: bold;
+}
+
+/*
 .about-us4,
 .home4 {
-  position: absolute;
-  top: 83px;
-  left: 944px;
-  font-size: var(--font-size-xl);
+  float: right;
   font-weight: 500;
+  color:#ffffff;
   cursor: pointer;
 }
 .about-us4 {
-  left: 1088px;
+  left: 1083px;
   font-weight: 500;
+  top: 73px;
+}*/
+
+.marv5 {
+    position: absolute;
+    top: 50px;
+    left: 90px;
+    cursor: pointer;
 }
-.pattarai-logo-white-14 {
+
+.marv{
   position: absolute;
-  top: 45px;
-  left: 102px;
-  width: 94px;
-  height: 76px;
-  object-fit: cover;
-}
-.marv4 {
-  position: absolute;
-  top: 121px;
-  left: 116px;
-  font-size: var(--font-size-xl);
-  font-weight: 800;
+  top: 50px;
+  left: 90px;
   cursor: pointer;
 }
+
 .illustrator-drawing-with-ipad-icon1 {
   position: absolute;
-  top: 160px;
-  left: 475px;
-  width: 353px;
-  height: 353px;
-  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%)
 }
+
 .new-project-1-select-4 {
   width: 100%;
   position: relative;
-  background: linear-gradient(
-    155.69deg,
-    #357af6,
-    #8431f0 35%,
-    #7000ff 69.5%,
-    #ea56c0
-  );
   height: 1884px;
   overflow: hidden;
   text-align: left;
