@@ -12,8 +12,8 @@ def trim_desc(main_string, starting_word):
         return None 
     trimmed_string = main_string[start_index + len(starting_word):-1].strip()
     return trimmed_string
-def seggregate_input():
-    idea=str(fetch())
+def seggregate_input(comp):
+    idea=str(fetch(comp))
     title=trim_title(idea,"Title:","Description:")
     description=trim_desc(idea,"Description:")
     elements=[title,description]

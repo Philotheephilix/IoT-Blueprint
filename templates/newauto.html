@@ -94,7 +94,7 @@
     </div>
 
     <div id="selectedItems"></div>
-
+<div class="done1" id="doneText">Done</div>
     <!-- Rest of your HTML content -->
 </div>
 
@@ -655,19 +655,45 @@
         document.getElementById("searchInput").value = "";
         document.getElementById("searchResults").style.display = "none";
     }
-</script>
+function sendDataToFlask(item) {
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
 
-<!-- Original script section -->
-<script>
+    // Configure it: POST-request for the URL /newproject
+    xhr.open('POST', '/newproject', true);
+
+    // Set request headers
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    // Define what happens on successful data submission
+
+
+    // Send the request with the selected item
+    xhr.send(JSON.stringify({ selected_item: item }));
+    xhr.onload = function() {
+        if (xhr.status == 200) {
+            // Redirect to another page after successful submission
+            window.location.href = "/project";
+        }
+    };
+}
     var doneText = document.getElementById("doneText");
     if (doneText) {
         doneText.addEventListener("click", function () {
-            var anchor = document.querySelector("[data-scroll-to='rectangle']");
+        // Find the selected item
+        var anchor = document.querySelector("[data-scroll-to='rectangle']");
             if (anchor) {
                 anchor.scrollIntoView({ block: "start", behavior: "smooth" });
             }
-        });
+        var selectedItem = document.querySelector(".selected-item");
+        if (selectedItem) {
+            var item = selectedItem.textContent;
+            // Send the selected item to Flask backend
+            sendDataToFlask(item);
+        }
+    });
     }
+    
 
     var homeText = document.getElementById("homeText");
     if (homeText) {
