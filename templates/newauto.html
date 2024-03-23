@@ -622,78 +622,70 @@
     ];
 
     // Function to search items
-    function searchItems() {
-        const searchInput = document.getElementById("searchInput").value.toLowerCase();
-        const searchResults = document.getElementById("searchResults");
-        searchResults.innerHTML = ""; // Clear previous results
+    var selectedItemsList = [];
 
-        items.forEach(item => {
-            if (item.toLowerCase().includes(searchInput)) {
-                const listItem = document.createElement("div");
-                listItem.classList.add("item");
-                listItem.textContent = item;
-                listItem.addEventListener("click", () => {
-                    addItem(item);
-                });
-                searchResults.appendChild(listItem);
-            }
-        });
+        // Function to search items
+        function searchItems() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const searchResults = document.getElementById("searchResults");
+            searchResults.innerHTML = ""; // Clear previous results
 
-        // Show search results
-        searchResults.style.display = searchInput ? "block" : "none";
-    }
+            items.forEach(item => {
+                if (item.toLowerCase().includes(searchInput)) {
+                    const listItem = document.createElement("div");
+                    listItem.classList.add("item");
+                    listItem.textContent = item;
+                    listItem.addEventListener("click", () => {
+                        addItem(item);
+                    });
+                    searchResults.appendChild(listItem);
+                }
+            });
 
-    // Function to add selected item
-    function addItem(item) {
-        const selectedItems = document.getElementById("selectedItems");
-        const selectedItem = document.createElement("div");
-        selectedItem.classList.add("selected-item");
-        selectedItem.textContent = item;
-        selectedItems.appendChild(selectedItem);
-
-        // Clear search input and hide search results
-        document.getElementById("searchInput").value = "";
-        document.getElementById("searchResults").style.display = "none";
-    }
-function sendDataToFlask(item) {
-    // Create a new XMLHttpRequest object
-    var xhr = new XMLHttpRequest();
-
-    // Configure it: POST-request for the URL /newproject
-    xhr.open('POST', '/newproject', true);
-
-    // Set request headers
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    // Define what happens on successful data submission
-
-
-    // Send the request with the selected item
-    xhr.send(JSON.stringify({ selected_item: item }));
-    xhr.onload = function() {
-        if (xhr.status == 200) {
-            // Redirect to another page after successful submission
-            window.location.href = "/project";
+            // Show search results
+            searchResults.style.display = searchInput ? "block" : "none";
         }
-    };
-}
-    var doneText = document.getElementById("doneText");
-    if (doneText) {
-        doneText.addEventListener("click", function () {
-        // Find the selected item
-        var anchor = document.querySelector("[data-scroll-to='rectangle']");
-            if (anchor) {
-                anchor.scrollIntoView({ block: "start", behavior: "smooth" });
-            }
-        var selectedItem = document.querySelector(".selected-item");
-        if (selectedItem) {
-            var item = selectedItem.textContent;
-            // Send the selected item to Flask backend
-            sendDataToFlask(item);
+
+        // Function to add selected item
+        function addItem(item) {
+            const selectedItems = document.getElementById("selectedItems");
+            const selectedItem = document.createElement("div");
+            selectedItem.classList.add("selected-item");
+            selectedItem.textContent = item;
+            selectedItems.appendChild(selectedItem);
+
+            // Add item to selected items list
+            selectedItemsList.push(item);
         }
-    });
-    }
+
+        function sendDataToFlask() {
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+            
+            // Configure it: POST-request for the URL /newproject
+            xhr.open('POST', '/newproject', true);
     
+            // Set request headers
+            xhr.setRequestHeader('Content-Type', 'application/json');
+    
+            // Send the request with the selected items list
+            xhr.send(JSON.stringify({ selected_items: selectedItemsList }));
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    // Redirect to another page after successful submission
+                    window.location.href = "/project";
+                }
+            };
+        }
+
+        // Event listener for sending data to Flask when done button is clicked
+        var doneText = document.getElementById("doneText");
+        if (doneText) {
+            doneText.addEventListener("click", function () {
+                sendDataToFlask();
+            });
+        }
+
 
     var homeText = document.getElementById("homeText");
     if (homeText) {

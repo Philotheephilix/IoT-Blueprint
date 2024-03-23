@@ -21,10 +21,10 @@ elements=[]
 @app.route('/newproject', methods=['POST'])
 def newproject():
     global elements
-    data = request.json.get('selected_item')
+    data = request.json.get('selected_items')
     print(data)
     elements=seggregate_input(data)
-
+    print(elements)
     return redirect(url_for('project',title=elements[0], description=elements[1]))
     
 @app.route("/project")
