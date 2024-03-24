@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>M A R V</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
@@ -70,11 +71,12 @@
     <!--<div class="home4" id="homeText">Home</div>
     <div class="about-us4" id="aboutUsText">About us</div> -->
     <ul>
-       <li class="home4"><a href="#">Home</a></li>
-       <li class="about-us4"><a href="#">About us</a></li>
+       <li class="home"><a href="{{ url_for('index') }}">Home</a></li>
+       <li class="about-us"><a href="{{ url_for('aboutus') }}">About us</a></li>
     </ul>
 </div>
      <img
+       id="marv"
        class="marv"
        alt=""
        src="{{ url_for('static',filename='img/marvlogo.png')}}"
@@ -690,21 +692,21 @@
     var homeText = document.getElementById("homeText");
     if (homeText) {
         homeText.addEventListener("click", function (e) {
-            window.location.href = "./blank.html";
+            window.location.href = "{{ url_for('index') }}";
         });
     }
 
     var aboutUsText = document.getElementById("aboutUsText");
     if (aboutUsText) {
         aboutUsText.addEventListener("click", function (e) {
-            window.location.href = "./blank.html";
+            window.location.href = "{{ url_for('aboutus') }}";
         });
     }
 
-    var mARVText = document.getElementById("mARVText");
+    var mARVText = document.getElementById("marv");
     if (mARVText) {
         mARVText.addEventListener("click", function (e) {
-            window.location.href = "./blank.html";
+            window.location.href = "{{ url_for('index') }}";
         });
     }
 </script>

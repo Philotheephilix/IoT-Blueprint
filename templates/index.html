@@ -10,6 +10,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap"
     />
+    <title>M A R V</title>
   </head>
   <body>
     <div class="homepage">
@@ -77,7 +78,7 @@
       var mARVText = document.getElementById("mARVText");
       if (mARVText) {
         mARVText.addEventListener("click", function (e) {
-          window.location.href = "./blank.html";
+          window.location.href = "{{ url_for('index')}}";
         });
       }
       </script>

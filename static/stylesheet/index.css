@@ -2,12 +2,11 @@
   color: var(--color-darkorchid-100);
 }
 .bring-your-ideas-container {
-  top: 323px;
-  left: 108px;
+  top: 34%;
+  left: 10%;
   font-size: var(--font-size-50xl);
   display: inline-block;
-  width: 505px;
-  height: 186px;
+  width: 100vh;
 }
 .about-us,
 .bring-your-ideas-container,
@@ -17,8 +16,10 @@
   font-weight: 800;
 }
 .life1 {
-  top: 407px;
-  left: 426px;
+  display: none;
+  position: relative;
+  top: 49%;
+  left: 33%;
   font-size: var(--font-size-50xl);
   color: transparent;
   -webkit-text-stroke: 1px #fff;
@@ -27,10 +28,11 @@
 .homepage-child,
 .homepage-item {
   position: absolute;
-  top: 539px;
+  top: 70%;
+  margin-left: 2%;
   border-radius: var(--br-xl);
-  width: 165px;
-  height: 41px;
+  width: 11%;
+  height: 7%;
   cursor: pointer;
 }
 .homepage-child {
@@ -38,7 +40,7 @@
   background-color: #d052fc;
 }
 .homepage-item {
-  left: 288px;
+  left: 9%;
   border: 1px solid #ea56c1;
   box-sizing: border-box;
 }
@@ -49,8 +51,9 @@
 .new-project,
 .saved-projects {
   position: absolute;
-  top: 551px;
-  left: 144px;
+  top: 71.3%;
+  left: 9.2%;
+  margin-left: 3%;
   font-size: var(--font-size-mini);
   font-weight: 500;
 }
@@ -59,12 +62,14 @@
 }
 .inspire-others-icon {
   position: absolute;
-  top: 210px;
-  left: 674px;
-  width: 478px;
-  height: 478px;
+  top: 11%;
+  /* left: 674px; */
+  right: 5%;
+  /* width: 100vh; */
+  /* height: 478px; */
   overflow: hidden;
 }
+
 .pattarai-logo-white-1 {
   position: absolute;
   top: 0;
@@ -97,8 +102,8 @@
     #7000ff 67.94%,
     #ea56c0
   );
-  height: 832px;
-  overflow: hidden;
+  height: 100vh;
+  overflow: hidden  ;
   text-align: left;
   font-size: var(--font-size-xl);
   color: var(--color-white);

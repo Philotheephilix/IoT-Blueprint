@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-
     <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/global.css')}}" />
     <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/saved-project1.css')}}" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap"
     />
+    <title>M A R V</title>
   </head>
   <body>
     <div class="saved-project1">
@@ -31,36 +31,34 @@
         src="{{ url_for('static',filename='img/pattarai-logo-white-1@2x.png')}}"
         id="pattaraiLogoWhite1"
       />
-
       <div class="marv2" id="mARVText">MARV</div>
     </div>
-
     <script>
       var homeText = document.getElementById("homeText");
       if (homeText) {
         homeText.addEventListener("click", function (e) {
-          window.location.href = "./blank.html";
+          window.location.href = "{{ url_for('index')}}";
         });
       }
       
       var aboutUsText = document.getElementById("aboutUsText");
       if (aboutUsText) {
         aboutUsText.addEventListener("click", function (e) {
-          window.location.href = "./blank.html";
+          window.location.href = "{{ url_for('aboutus') }}";
         });
       }
       
       var pattaraiLogoWhite1 = document.getElementById("pattaraiLogoWhite1");
       if (pattaraiLogoWhite1) {
         pattaraiLogoWhite1.addEventListener("click", function (e) {
-          window.location.href = "./saved-project.html";
+          window.location.href = "{{ url_for('index')}}";
         });
       }
       
       var mARVText = document.getElementById("mARVText");
       if (mARVText) {
         mARVText.addEventListener("click", function (e) {
-          window.location.href = "./blank.html";
+          window.location.href = "{{ url_for('index')}}";
         });
       }
       </script>
