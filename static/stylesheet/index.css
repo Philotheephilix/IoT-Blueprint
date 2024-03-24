@@ -23,16 +23,7 @@
   color: transparent;
   -webkit-text-stroke: 1px #fff;
 }
-.about-us,
-.home {
-  top: 73px;
-  left: 939px;
-  cursor: pointer;
-}
-.about-us {
-  left: 1083px;
-  font-weight: 500;
-}
+
 .homepage-child,
 .homepage-item {
   position: absolute;
@@ -50,6 +41,10 @@
   left: 288px;
   border: 1px solid #ea56c1;
   box-sizing: border-box;
+}
+.homepage-item,
+.saved-projects{
+  display: none;
 }
 .new-project,
 .saved-projects {

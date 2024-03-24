@@ -5,7 +5,16 @@ body {
   background-repeat: no repeat;
   background-attachment: fixed;
 }
-
+.about-us,
+.home {
+  top: 6%;
+  right: 15%;
+  cursor: pointer;
+}
+.about-us {
+  right: 5%;
+  font-weight: 500;
+}
 :root {
   /* fonts */
   --font-montserrat: Montserrat;
