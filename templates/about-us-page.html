@@ -3,13 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-
     <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/global.css')}}" />
     <link rel="stylesheet" href="{{ url_for('static',filename='stylesheet/about-us-page.css')}}" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap"
-    />
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap"/>
     <title>M A R V</title>
   </head>
   <body>
@@ -21,9 +19,7 @@
             <img
               class="pattarai-logo-white-19"
               alt=""
-              src="{{ url_for('static',filename='img/pattarai-logo-white-1@2x.png')}}"
-            />
-
+              src="{{ url_for('static',filename='img/pattarai-logo-white-1@2x.png')}}"/>
             <div class="marv9" id="mARVText">MARV</div>
           </div>
           <div class="home" id="homeText">Home</div>
@@ -36,7 +32,6 @@
             alt=""
             src="{{ url_for('static',filename='img/aboutourteam.svg')}}"
           />
-
           <div class="frame36">
             <div class="who-we-are">Who we are</div>
             <div class="lorem-ipsum-dolor">
@@ -51,7 +46,6 @@
         </div>
       </div>
     </div>
-
     <script>
       var aboutUsText = document.getElementById("aboutUsText");
       if (aboutUsText) {
@@ -59,14 +53,12 @@
           window.location.href = "{{ url_for('aboutus')}}";
         });
       }
-      
       var mARVText = document.getElementById("mARVText");
       if (mARVText) {
         mARVText.addEventListener("click", function (e) {
           window.location.href = "./blank.html";
         });
-      }
-      
+      }     
       var homeText = document.getElementById("homeText");
       if (homeText) {
         homeText.addEventListener("click", function (e) {

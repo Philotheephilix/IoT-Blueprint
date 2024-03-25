@@ -1,4 +1,7 @@
 from .fetch import fetch
+
+#   responce seggregation module   
+
 def trim_title(main_string, ending_word):
     start_index=0
     for title in ['Title:','title:']:

@@ -1,5 +1,10 @@
 from .chat import chat
 
+##Prompt designer for accurate output
+
+##change as per users requirment
+#change max_token from chat module according to the length of the response needed
+
 def fetch(components):
     prompt_base='give an innovative project idea which can be done with the components given '
     prompt_component=""
