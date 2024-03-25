@@ -1,5 +1,9 @@
 from flask import Flask, redirect, render_template, jsonify,request, url_for
+
+
 from modules.seggregator import seggregate_input, trim_title, trim_desc
+from modules.components import items
+
 app = Flask(__name__)
 
 #Homepage routes
@@ -20,7 +24,7 @@ def saved():
 #New projcect page routes
 @app.route("/new")
 def new():
-    return render_template('newauto.html')
+    return render_template('newauto.html',items=items)
 elements=[]
 
 @app.route('/newproject', methods=['POST'])

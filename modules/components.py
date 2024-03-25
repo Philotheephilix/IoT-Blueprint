@@ -1,6 +1,4 @@
-#List of components supported
-
-items = [
+items="""const items = [
         "Resistor",
         "Capacitor",
         "Inductor",
@@ -519,4 +517,4 @@ items = [
     "Zigbee CC2652RB126 Wireless Transceiver Module"
 
 
-    ];
+    ];"""
