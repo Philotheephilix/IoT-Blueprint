@@ -150,9 +150,17 @@
   font-weight: 500;
 }
 .done1 {
-  top: 1711px;
-  left: 619px;
+  top: 36%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* left: 619px; */
   cursor: pointer;
+  background-color: #e653c2;
+  padding-left: 2%;
+  padding-right: 2%;
+  height: 6%;
+  border-radius: 50px;
 }
 .select-your-component {
   top: 783px;
@@ -245,7 +253,7 @@
 
 .navbar li{
   display: inline-block;
-  margin: 20px;
+  /* margin: 20px; */
 }
 
 .navbar a{
@@ -291,13 +299,14 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  height: 73%;
   transform: translate(-50%,-50%)
 }
 
 .new-project-1-select-4 {
   width: 100%;
   position: relative;
-  height: 1884px;
+  height: 100%;
   overflow: hidden;
   text-align: left;
   font-size: var(--font-size-mini);

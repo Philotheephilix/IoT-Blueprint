@@ -24,7 +24,13 @@
   color: transparent;
   -webkit-text-stroke: 1px #fff;
 }
-
+.homepage-child {
+  left: 108px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d052fc;
+}
 .homepage-child,
 .homepage-item {
   position: absolute;

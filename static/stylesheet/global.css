@@ -7,7 +7,7 @@ body {
 }
 .about-us,
 .home {
-  position: fixed;
+  position: relative;
   top: 6%;
   right: 15%;
   cursor: pointer;

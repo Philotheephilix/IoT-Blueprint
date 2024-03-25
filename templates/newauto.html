@@ -12,10 +12,12 @@
         /* Additional styles for the search bar and selected items */
         .new-project-1-select-4{
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: static;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* position: static; */
+    top: 74%;
+    position: absolute;
             
         }
         
@@ -23,6 +25,10 @@
             position: relative;
             margin-bottom: 20px;
             width: 50%;
+            top: 20%;
+            background-color: rgb(255, 255, 255);
+            color: beige;
+            border-radius: 50%;
         }
 
         #searchInput {
@@ -32,6 +38,9 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+            background-color: #7c38f1;
+            color: beige;
+            border-radius: 25px;
         }
 
         #searchResults {
@@ -55,14 +64,18 @@
         }
 
         #selectedItems {
-            margin-top: 20px;
+            margin-top: 13%;
+
         }
 
         .selected-item {
             margin-bottom: 5px;
             padding: 5px;
-            background-color: #f1f1f1;
+            background-color: #ca6fff;
             border-radius: 4px;
+        }
+        .placeholder::placeholder{
+             color: #ffffff;
         }
     </style>
 </head>
@@ -91,12 +104,14 @@
 </div>
 <div class="new-project-1-select-4">
     <div class="search-container">
-        <input type="text" id="searchInput" oninput="searchItems()" placeholder="Search components">
+        <input class="placeholder" type="text" id="searchInput" oninput="searchItems()" placeholder="Search components">
         <div id="searchResults"></div>
     </div>
 
     <div id="selectedItems"></div>
+    <div style="background-color: #ffffff;">
 <div class="done1" id="doneText">Done</div>
+</div>
     <!-- Rest of your HTML content -->
 </div>
 
