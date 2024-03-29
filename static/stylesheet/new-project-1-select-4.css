@@ -5,6 +5,7 @@
   font-size: var(--font-size-xl);
   font-weight: 500;
 }
+
 .communication-components1,
 .electronic-components1,
 .mechanical-components1,
@@ -187,51 +188,7 @@
 .select-your-communication1 {
   top: 1561px;
 }
-.capacitor1,
-.inductor,
-.resistor1 {
-  position: absolute;
-  top: 825px;
-  left: 125px;
-}
-.capacitor1,
-.inductor {
-  top: 866px;
-}
-.inductor {
-  top: 909px;
-}
-.led,
-.transistor,
-.transistor1 {
-  position: absolute;
-  top: 951px;
-  left: 125px;
-}
-.led,
-.transistor1 {
-  top: 1119px;
-}
-.led {
-  top: 1161px;
-}
-.b,
-.diode,
-.led1,
-.microcontroller {
-  position: absolute;
-  top: 993px;
-  left: 125px;
-}
-.b,
-.diode,
-.microcontroller {
-  top: 1035px;
-}
-.b,
-.diode {
-  top: 1077px;
-}
+
 .b {
   top: 867px;
   left: 1096px;
@@ -260,7 +217,7 @@
   text-decoration: none;
   color: white;
   display: block;
-  padding: 60px 25px;
+
 }
 
 .navbar a:hover{
