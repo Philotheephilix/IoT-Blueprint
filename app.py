@@ -25,8 +25,6 @@ def saved():
 @app.route("/new")
 def new():
     return render_template('newauto.html',items=items)
-elements=[]
-
 @app.route('/newproject', methods=['POST'])
 def newproject():
     global elements
