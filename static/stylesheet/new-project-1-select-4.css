@@ -150,7 +150,13 @@
   position: absolute;
   font-weight: 500;
 }
+.btnGrd{
+  display: flex;
+  justify-content: center;
+}
 .done1 {
+  font-size: 20px;
+  font-weight: 800;
   top: 36%;
   display: flex;
   justify-content: center;
@@ -162,6 +168,11 @@
   padding-right: 2%;
   height: 6%;
   border-radius: 50px;
+}
+
+
+.done1:hover {
+  color: black; /* Font color on hover */
 }
 .select-your-component {
   top: 783px;
@@ -244,20 +255,20 @@
     left: 90px;
     cursor: pointer;
 }
-
-.marv{
-  position: absolute;
-  top: 50px;
-  left: 90px;
-  cursor: pointer;
+.marv {
+    top: 18px;
+    left: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    position: sticky;
 }
 
 .illustrator-drawing-with-ipad-icon1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 73%;
-  transform: translate(-50%,-50%)
+  position: absolute !important;
+  top: 37%!important;
+  left: 50%!important;
+  height: 30%!important;
+  transform: translate(-50%, -50%)!important;
 }
 
 .new-project-1-select-4 {

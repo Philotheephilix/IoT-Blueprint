@@ -13,7 +13,7 @@
     /* justify-content: center; */
     align-items: center;
     /* position: static; */
-    top: 74%;
+    top: 34%;
     position: absolute;    
         } 
         .search-container {
@@ -25,16 +25,16 @@
             color: beige;
             border-radius: 50%;
         }
-        #searchInput {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
+            #searchInput {
+            width: 102%;
+            padding: 15px;
+            font-size: 18px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
             background-color: #7c38f1;
             color: beige;
-            border-radius: 25px;
+            border-radius: 30px;
         }
         #searchResults {
             display: none;
@@ -51,10 +51,11 @@
             cursor: pointer;
         }
         #searchResults .item:hover {
-            background-color: #f9f9f9;
+            background-color: #080808;
+            font: black;
         }
         #selectedItems {
-            margin-top: 13%;
+            margin-top: 19%;
         }
         .selected-item {
             margin-bottom: 5px;
@@ -65,19 +66,20 @@
         .placeholder::placeholder{
              color: #ffffff;
         }
+        
     </style>
 </head>
 <body>
 <div class="navbar">
     <!--<div class="home4" id="homeText">Home</div>
     <div class="about-us4" id="aboutUsText">About us</div> -->
-    <ul>
+    <!-- <ul>
        <li class="home"><a href="{{ url_for('index') }}">Home</a></li>
        <li class="about-us"><a href="{{ url_for('aboutus') }}">About us</a></li>
-    </ul>
+    </ul> -->
 </div>
-<div class="home" id="homeText">Home</div>
-<div class="about-us" id="aboutUsText">About us</div>
+<!-- <div class="home" id="homeText">Home</div>
+<div class="about-us" id="aboutUsText">About us</div> -->
      <img
        id="marv"
        class="marv"
@@ -93,16 +95,19 @@
 
 </div>
 <div class="home" id="homeText">Home</div>
-<div class="about-us" id="aboutUsText">About us</div>
+
+<div class="about-us" id="aboutUsText" onclick="goToAboutUs()">About Us</div>
 <div class="new-project-1-select-4">
     <div class="search-container">
-        <input class="placeholder" type="text" id="searchInput" oninput="searchItems()" placeholder="Search components">
+        <input class="placeholder" type="text" id="searchInput" oninput="searchItems()" placeholder="Search components" autocomplete="off">
         <div id="searchResults"></div>
     </div>
 
     <div id="selectedItems"></div>
     <div style="background-color: #ffffff;">
-<div class="done1" id="doneText">Done</div>
+        <div class="btnGrd">
+            <div class="done1" id="doneText">Done</div>
+        </div>
 </div>
     <!-- Rest of your HTML content -->
 </div>
@@ -136,13 +141,15 @@
         }
         // Function to add selected item
         function addItem(item) {
+            const searchInput = document.getElementById('searchInput').value=" ";
+            const searchResults = document.getElementById("searchResults").style.display='none';
             const selectedItems = document.getElementById("selectedItems");
             const selectedItem = document.createElement("div");
             selectedItem.classList.add("selected-item");
             selectedItem.textContent = item;
             selectedItems.appendChild(selectedItem);
-            // Add item to selected items list
             selectedItemsList.push(item);
+
         }
         function sendDataToFlask() {
             // Create a new XMLHttpRequest object
@@ -168,24 +175,30 @@
                 sendDataToFlask();
             });
         }
-    var homeText = document.getElementById("homeText");
-    if (homeText) {
-        homeText.addEventListener("click", function (e) {
-            window.location.href = "{{ url_for('index') }}";
-        });
+
+        function goToAboutUs() {
+        window.location.href = 'templates/about-us-page.html';
     }
-    var aboutUsText = document.getElementById("aboutUsText");
-    if (aboutUsText) {
-        aboutUsText.addEventListener("click", function (e) {
-            window.location.href = "{{ url_for('aboutus') }}";
-        });
-    }
-    var mARVText = document.getElementById("marv");
-    if (mARVText) {
-        mARVText.addEventListener("click", function (e) {
-            window.location.href = "{{ url_for('index') }}";
-        });
-    }
+        var homeText = document.getElementById("homeText");
+        if (homeText) {
+            homeText.addEventListener("click", function (e) {
+            window.location.href = "{{ url_for('index')}}";
+            });
+        }
+      
+        var aboutUsText = document.getElementById("aboutUsText");
+        if (aboutUsText) {
+            aboutUsText.addEventListener("click", function (e) {
+            window.location.href = "{{ url_for('aboutus')}}";
+            });
+        }
+        var mARVText = document.getElementById("marv");
+        if (mARVText) {
+            mARVText.addEventListener("click", function (e) {
+                window.location.href = "{{ url_for('index') }}";
+            });
+        }
+    
 </script>
 </body>
 </html>

@@ -7,13 +7,19 @@ body {
 }
 .about-us,
 .home {
-  position: fixed;
-  top: 6%;
-  right: 15%;
-  cursor: pointer;
-  font-size: var(--font-size-xl);
-  color: var(--color-white);
-  font-family: var(--font-montserrat);
+    position: fixed;
+    top: 6%;
+    right: 13%;
+    cursor: pointer;
+    font-size: var(--font-size-xl);
+    color: var(--color-white);
+    font-family: var(--font-montserrat);
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.about-us:hover,
+.home:hover {
+    color: black; /* Change color to black on hover */
 }
 .about-us {
   right: 5%;

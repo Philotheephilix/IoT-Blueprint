@@ -1,3 +1,9 @@
+
+
+
+
+
+
 .life {
   color: var(--color-darkorchid-100);
 }
@@ -60,10 +66,17 @@
 .saved-projects {
   position: absolute;
   top: 71.3%;
-  left: 9.2%;
+  left: 7.4%;
   margin-left: 3%;
-  font-size: var(--font-size-mini);
-  font-weight: 500;
+  font-size: 20px; /* Increased font size */
+  font-weight:500;
+  color: black; /* or any other initial color */
+  transition: color 0.3s ease; /* Smooth transition effect */
+}
+
+.new-project:hover,
+.saved-projects:hover {
+  color: white; /* Hover color change to white */
 }
 .saved-projects {
   left: 314px;
@@ -95,8 +108,8 @@
 }
 .pattarai-logo-white-1-parent {
   position: absolute;
-  top: 35px;
-  left: 97px;
+  top: 8px;
+  left: 22px;
   width: 94px;
   height: 100px;
 }

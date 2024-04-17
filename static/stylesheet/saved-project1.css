@@ -42,15 +42,24 @@
   cursor: pointer;
 }
 .about-us2 {
-  top: 77px;
-  left: 1087px;
   font-weight: 500;
 }
 .about-us2,
-.marv2,
 .pattarai-logo-white-12 {
   position: absolute;
   cursor: pointer;
+}
+.about-us2{
+  position: absolute;
+  display: flex;
+  top: 5%;
+  right:5%;  
+}
+.marv2{
+  position: absolute;
+  display: flex;
+  top: 7.5%;
+  left: 7%;
 }
 .pattarai-logo-white-12 {
   top: 39px;
@@ -59,10 +68,12 @@
   height: 76px;
   object-fit: cover;
 }
-.marv2 {
-  top: 115px;
-  left: 118px;
+.marv {
+  position: absolute;
+  top: 76px;
+  left: 14px;
   font-weight: 800;
+  cursor: pointer;
 }
 .saved-project1 {
   width: 100%;
