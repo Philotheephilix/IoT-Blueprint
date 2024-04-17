@@ -1,7 +1,7 @@
 from flask import Flask, redirect, render_template, jsonify, request, url_for
-from werkzeug.urls import url_parse, url_unquote
 
 from modules.components import items
+from modules.seggregator import seggregate_input
 
 app = Flask(__name__)
 
