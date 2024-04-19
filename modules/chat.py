@@ -1,7 +1,7 @@
 import openai
-
-openai.api_key = 'pk-picRItgpTZAjWHzpezyucAQqMoDxmwApNIIQFRtGcEIbKNar'
-openai.api_base = 'https://api.pawan.krd/v1'
+from .config import api_base,api_key 
+openai.api_key = api_key
+openai.api_base =api_base
 
 # change engine and remove api_base if using official openai api
 
