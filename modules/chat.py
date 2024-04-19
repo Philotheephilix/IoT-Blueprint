@@ -1,7 +1,7 @@
 import openai
 from .config import api_base,api_key 
 openai.api_key = api_key
-openai.api_base =api_base
+#openai.api_base =api_base
 
 # change engine and remove api_base if using official openai api
 
